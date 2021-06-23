@@ -1,0 +1,103 @@
+#include<stdio.h>
+int main()
+{
+	int n,m,i,j,isPrime = 1;
+	int birth_date = 9;
+	int birth_month = 06;
+	int birth_year = 2002;
+	int present_date = 23;
+	int present_month = 06;
+	int present_year = 2021;
+	int month[] = { 31, 28, 31, 30, 31, 30, 31,
+                          31, 30, 31, 30, 31 };
+ 
+    if (birth_date > present_date) {
+        present_date = present_date + month[birth_month - 1];
+        present_month = present_month - 1;
+	}
+    if (birth_month > present_month) {
+        present_year = present_year - 1;
+        present_month = present_month + 12;
+    }
+    
+    int calculated_date = present_date - birth_date;
+    int calculated_month = present_month - birth_month;
+    int calculated_year = present_year - birth_year;
+
+    printf("Present Age\nYears: %d  Months: %d  Days:"
+           " %d\n", calculated_year, calculated_month,
+                                      calculated_date);
+    m=(calculated_year)*365  +  (calculated_month)*30 + (calculated_date) ;
+	printf("\nPresent Age in days\nDays: %d",m); 
+    n=(calculated_year)*52  +  (calculated_month)*4  + (calculated_date)/7;                                
+	printf("\n\nPresent Age in weeks\nWeeks: %d",n);
+	
+	
+	//finding the prime and composite factors
+	
+	printf("\nFactors of %d are: ",n);
+	for(i = 1; i<=n; ++i){
+		if(n % i ==0){
+			printf("%d, ",i);
+		}
+	}
+	printf("\n\nprime factors of %d are: ",i);
+		int sum=0;
+		for(i=2; i<=n; i++)
+		{
+			if(n%i==0)
+			{
+				isPrime = 1;
+				for(j=2; j<=i/2; j++)
+					{
+							if(i%j==0)
+						{
+							isPrime=0;
+							break;
+						}
+					}
+					if(isPrime==1)
+					{
+						printf("%d, ",i);
+						sum += i;
+					}
+			}
+		}
+		printf("\nsum of prime factors: %d",sum);
+	printf("\n\ncompositefactors of %d are: ",i);
+		int sum1=0;
+		for(i=2; i<=n; i++)
+		{
+			if(n%i==0)
+			{
+				isPrime = 1;
+				for(j=2; j<=i/2; j++)
+					{
+							if(i%j==0)
+						{
+							isPrime=0;
+							break;
+						}
+					}
+					if(isPrime!=1)
+					{
+						printf("%d, ",i);
+						sum1 += i;
+					}
+			}
+		}
+		printf("\nsum of composite factors: %d",sum1);
+		
+		
+		
+		if(sum>sum1)
+		{
+			printf("\nThe wil is granted");
+		}
+		else if(sum<sum1)
+		{
+			printf("\nThe wil is not granted");
+		}
+		
+}
+		
